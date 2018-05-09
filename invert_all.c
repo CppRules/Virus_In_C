@@ -10,8 +10,9 @@ PAYLOAD (invert_all) {
 }
 
 BOOL CALLBACK EnumChildProc (HWND hwnd, LPARAM lParam) {
-	
-	BitBlt(GetDC(hwnd), 0, 0, get_desktop_size (TRUE), get_desktop_size (FALSE), GetDC(DESKTOP), 0, 0, NOTSRCCOPY);
+	RECT aaa; 
+	GetWindowRect (hwnd, &aaa);
+	BitBlt(GetDC(hwnd), 0, 0, (aaa.right-aaa.left), (aaa.bottom-aaa.top), GetDC(DESKTOP), 0, 0, NOTSRCCOPY);
 	
 	return TRUE;
 }
